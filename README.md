@@ -1,12 +1,12 @@
-# Stanford Geothermal Python-Sessons -- Intermediate Advanced
+# Stanford Geothermal Python-Sessions -- Intermediate Advanced
 
-
-Source control for you, future you, and your team
-Collaboration using source control and code structure and commenting
-Unit handling - object names (self-documenting code), Pint, code commenting
-Open source and licenses
-Steam tables (both packages)
-Other specialist packages
+Ecosystem/package topics:
+- Source control for you, future you, and your team
+- Collaboration using source control and code structure and commenting
+- Unit handling - object names (self-documenting code), Pint, code commenting
+- Open source and licenses
+- Steam tables (both packages)
+- Other specialist packages
 
 
 Examples:
