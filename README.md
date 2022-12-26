@@ -1,19 +1,11 @@
 # Stanford Geothermal Python-Sessions -- Intermediate Advanced
 
-Ecosystem/package topics:
-- Source control for you, future you, and your team
-- Collaboration using source control and code structure and commenting
-- Unit handling - object names (self-documenting code), Pint, code commenting
-- Open source and licenses
-- Steam tables (both packages)
-- Other specialist packages
+## Overview
+### Who, when, what
 
 
-Examples:
-- Mass-ballance (data handling in Pandas, volume flow to mass flow, sum seps)
-- Pandas and numpy in computer memory and .copy() pointers vs copies
-- Clean steamfield data (when to excel and when to Python)
-- Static (matplotlib, de javu font pack, figure finishing) and dynamic plotting (Plotly)
-- Something from the well test tutorial (first, second, third order polynomials)
-- Something from fractoolbox (integration)
-- Something from fractoolbox (linear algebra)
+### Structure
+The workshop is a mix of lecture and code-along using Jupyter Notebooks. 
+
+## Pre-requites
+Below is what I expect you to already know and have installed if you want to participate in the code-along portion of this workshop. You are welcome to attend if you do not meet these pre-requisites but, as this session is designed for intermediate and above, we will not be providing additional code-along support. 
