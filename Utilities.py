@@ -1,40 +1,81 @@
-import numpy as np
+import matplotlib.pyplot as plt
 
+# 
+# Use frictional faulting theory to constrain limits of the stress polygon
+# 
 
-def interpolate_survey(x_target, x_source, y_source):
-    '''
-    1D linear interpolation of monotonically increasing data, such as well survey data.
+# Extension limit of the stress polygon
+# S_hmin = S_Hmax << S_v
 
-    Given two lists or 1D arrays of related values (x_source, y_source), linearly interpolate
-    y values from  a list of x values (x_target). For example, x may be well measured depth and y may be
-    vertical depth. The method expects 1D arrays or lists, so .values must be called on 
-    Pandas dataframe columns. x_source and y_source must be the same length and must be monotonically increasing.
-    Results are rounded to 2 decimal places.
-
-    Args:   
-                x_target: (list/1D np.array) interpolation target values
-                x_source: (list/1D np.array) known x value that maps to the known y value
-                y_source: (list/1D np.array) known y value that that 
+def minstress(S1,Pp,mu):
+    '''Use the stress ratio and frictional faulting theroy to constrain minimum stress
     
-    Returns:    1D array of y values that map to x_target and are linearly interpolated from x_source and y_source
-    '''
-    # Rasing input data errors
-    if (not np.all(np.diff(x_target) > 0)):
-        raise ValueError(
-            'x_target (first positional arg) must be in increasing order and not contain NaN'
-            )
-
-    if (not np.all(np.diff(x_source) > 0)):
-        raise ValueError(
-            'x_source (second positional arg) must be in increasing order and not contain NaN'
-            )
-
-    if (not np.all(np.diff(y_source) > 0)):
-        raise ValueError(
-            'y_source (third positional arg) must be in increasing order and not contain NaN'
-            )
+    My calculations assume MPa, but other pressure units (Pa, psi) could be used
     
-    # Generating the interpolated value
-    y_target = np.around(np.interp(x_target, x_source, y_source),2)
+        Args:       Pp pore pressure 
+                    S1 maximum stress
+        
+        Returns:    S3 minimum stress
+    '''
+    S3 = ((S1-Pp)/(((mu**2 + 1.)**0.5 + mu)**2))+Pp
+    return S3
 
-    return y_target
+
+# Compression limit of the stress polygon
+# S_hmin = S_Hmax >> S_v
+
+def maxstress(S3,Pp,mu):
+    '''Use the stress ratio and frictional faulting theory to constrain the maximum stress
+    
+        My calculations assume MPa, but other pressure units (Pa, psi) could be used
+    
+        Args:       Pp pore pressure 
+                    S3 minimum stress
+        
+        Returns:    S1 maximum stress
+    '''
+    S1 = ((S3-Pp)*(((mu**2 + 1.)**0.5 + mu)**2))+Pp
+    return S1
+
+#
+# Generate stress polygon
+#
+
+def stress_polygon(Sv, Pp, mu):
+    '''
+    
+    
+    '''
+    # define stress limits
+    minSh = minstress(Sv,Pp,mu)
+    maxSh = maxstress(Sv,Pp,mu)
+    minSH = minSh 
+    maxSH = maxSh
+
+    fig, ax = plt.subplots(1,1,figsize=(6,6))
+
+    # Vertical stress
+    ax.plot(Sv,Sv,'o',color='k')         # 2. Central point $ S_hmin = S_Hmax = S_v $
+
+    # Connecting lines
+    ax.plot([minSh,minSh],[minSh,Sv],color='k',alpha=0.5) 
+    ax.plot([minSh,Sv],[Sv,maxSH],color='k',alpha=0.5)
+    ax.plot([Sv,maxSh],[maxSH,maxSH],color='k',alpha=0.5)
+    ax.plot([minSh,Sv],[Sv,Sv],color='k',linestyle=':',alpha=0.5)
+    ax.plot([Sv,Sv],[Sv,maxSH],color='k',linestyle=':',alpha=0.5)
+    ax.plot([minSh,maxSH],[minSh,maxSH],color='k',alpha=0.5)
+
+    # Labels
+    ax.text((maxSH-Sv)/4+Sv,(maxSH-Sv)/1.5+Sv, 'RF', fontsize=10)
+    ax.text((Sv-minSh)/2+minSh,(maxSH-Sv)/8+Sv, 'SS', fontsize=10)
+    ax.text((Sv-minSh)/4+minSh,(Sv-minSh)/1.5+minSh, 'NF', fontsize=10)
+
+    # Format plot
+
+    ax.set_xlim(minSh-20, maxSh+20)
+    ax.set_ylim(minSh-20, maxSh+20)
+
+    ax.set_xlabel('$S_{hmin}$ [MPa]')
+    ax.set_ylabel('$S_{Hmin}$ [MPa]')
+
+    return plt
