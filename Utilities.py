@@ -43,8 +43,17 @@ def maxstress(S3,Pp,mu):
 
 def stress_polygon(Sv, Pp, mu):
     '''
-    
-    
+    Draws stress polygon (Zoback-a-gram)
+
+
+        Args:
+            Sv (float) vertical stress in MPa
+            Pp (float) pore pressure in MPa
+            mu (float) Coefficient of friction
+
+        Returns: 
+            matplotlib.pyplot plt object
+
     '''
     # define stress limits
     minSh = minstress(Sv,Pp,mu)
