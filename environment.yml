@@ -1,4 +1,4 @@
-name: sgw_env
+name: sgw_env_int
 channels:
   - conda-forge
   - defaults
@@ -14,7 +14,9 @@ dependencies:
   - openpyxl      # Needed to open xls files in Pandas
   - matplotlib    # Primary plotting package
   - seaborn       # Advanced static plotting package
+  - plotly        # Advanced dynamic plotting package
   - pip:
+    - chemicals   # Steam tables (and lots of other stuff)
     #- ipywidgets==7.6.3
     #- jupyterlab-widgets==1.0.0
     #- widgetsnbextension==3.5.1
