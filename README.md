@@ -4,7 +4,7 @@
 
 This workshop is designed expand participants knowledge of Python's language, libraries/packages, and ecosystem in ways that will advance the practical use of Python in geothermal science and engineering. 
 
-The workshop is designed to be delivered in-person as lectures and demonstration using the code in this repo. Therefore, this repo lacks the wrap-around documentation that is typical for a self-directed courses. The course content assumes participants already have a basic working knowledge of python.
+Because this workshop is designed to be delivered in-person, it lacks the wrap-around documentation that is typical for a self-directed courses. The workshop assumes participants already have a basic working knowledge of python.
 
 ## Setup Instructions
 
