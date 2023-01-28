@@ -8,8 +8,8 @@ The workshop is designed to be delivered in-person as lectures and demonstration
 
 ## Setup Instructions
 
-Participants attending this intermediate session directly after the beginner session can use the same environnement. I will demonstrate how to install other packages directly into that environment. 
+Participants attending this intermediate session directly after the beginner session can use the same environment. I will demonstrate how to install other packages directly into that environment. 
 
-Participants attending only the intermediate session can either follow the setup instructions [here](https://github.com/ICWallis/Stanford-Geothermal-Python-Sessions--Beginner) or build an environnement from the requirements.yml in this repo. 
+Participants attending only the intermediate session can either follow the setup instructions [here](https://github.com/ICWallis/Stanford-Geothermal-Python-Sessions--Beginner) or build an environment from the requirements.yml in this repo. 
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ICWallis/Stanford-Geothermal-Python-Sessions--Intermediate/main)
